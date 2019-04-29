@@ -16,7 +16,7 @@ class CreateDataTable extends Migration
         Schema::create('data', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('email', 210)->unique();
+            $table->string('email', 171)->unique();
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 @component('mail::message')
 # Introduction
 
-Hello {{str_split($name, ' ')[0]}}
+Hello {{explode($name, ' ')[0]}}
 
 Your event qr code has been attached below
 
