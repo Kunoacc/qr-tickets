@@ -38,13 +38,13 @@ class DataController extends Controller
     public function verify(Request $request, $uuid){
         try{
             $data = Data::whereUuid($uuid)->first();
-            if (count($data) < 1){
-                throw new HttpException(404, 'User Id Not Found');
+            if (!$data || count($data) < 1){
+                throw new HttpException(406, 'User ID Not Found');
             } else {
                 throw new HttpException(200, $data);
             }
         } catch (HttpException $exception){
-            if ($exception->getStatusCode() === 404){
+            if ($exception->getStatusCode() === 406){
                 return response()->json([
                     'status' => $exception->getStatusCode(),
                     'message' => $exception->getMessage()
