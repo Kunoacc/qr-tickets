@@ -1,10 +1,21 @@
 @component('mail::message')
-# Introduction
 
-Hello {{explode($name, ' ')[0]}}
+Dear <b>{{explode(' ', $name)[0]}}</b>,
 
-Your event qr code has been attached below
+Thank you for choosing to attend the AFF Disrupt Conference 2019.
 
-Thanks,<br>
+Please present the QR code below at the entrance of the event to gain access to the event.
+
+The event will hold on the 16th of May at the Landmark Event Centre (plot 2 & 3, Water Corporation Drive, Victoria Island). Please be punctual, the event will start at 8am prompt.
+
+Also, for more information about our events and what we do, please follow us on Instagram <b><a href="https://instagram.com/africafintechfoundry">@africafintechfoundry</a></b> and on Twitter <b><a href="https://twitter.com/@AFFoundry">@AFFoundry</a></b>.
+
+And be sure to use the #affdisrupt2019 hashtag for the event.
+
+For further enquiries, please contact Oluwaseyi at <a href="mailto:oluwaseyi.balogun@africafintechfoundry.com">oluwaseyi.balogun@africafintechfoundry.com</a>
+
+We look forward to welcoming you at the event.
+
+Thank you,<br>
 {{ config('app.name') }}
 @endcomponent

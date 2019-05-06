@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="content vw-100 vh-100 text-center">
-        <form action="{{route('importData')}}" class="py-5 px-3 border border-secondary rounded centered col-8 mx-auto shadow" method="post" enctype="multipart/form-data">
+        <form action="{{route('data.upload')}}" class="py-5 px-3 border border-secondary rounded centered col-8 mx-auto shadow" method="post" enctype="multipart/form-data">
             @csrf
             <h4 class="">Upload Spreadsheet</h4>
             <div class="col-10 mx-auto py-3">

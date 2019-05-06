@@ -16,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-Route::post('/upload_data', 'DataController@import')->name('importData');
+Route::post('/upload', 'DataController@import')->name('data.upload');
+Route::post('/verify/{uuid}', 'DataController@verify')->name('data.verify');
+Route::prefix('/attendees')->group(function (){
+   Route::post('/add', 'AttendeeController@add');
+});
+
+
 Route::get('/data', function (){return view('data');});
 Route::post('/send_qr', 'DataController@sendQr')->name('sendData');
 Route::get('/test_email', function (\App\Data $data){

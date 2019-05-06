@@ -40,10 +40,10 @@ class EventSent extends Mailable
                 'email' => $this->data->email,
                 'name' => $this->data->name,
                 'message' => new Message(new \Swift_Message())
-            ])->from('contact@nelsonatuonwu.me')->attachData(
-                QrCode::format('png')->size('400')->generate($this->data->name), 'qr.png', [
+            ])->from('affdisrupt2019@africafintechfoundry.com')->attachData(
+                QrCode::format('png')->size('400')->generate($this->data->uuid), 'qr.png', [
                     'mime' => 'image/png'
                 ]
-            );
+            )->subject('Disrupt 2019 QR Code');
     }
 }

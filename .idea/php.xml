@@ -86,6 +86,8 @@
       <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
       <path value="$PROJECT_DIR$/vendor/simplesoftwareio/simple-qrcode" />
       <path value="$PROJECT_DIR$/vendor/picqer/php-barcode-generator" />
+      <path value="$PROJECT_DIR$/vendor/dyrynda/laravel-model-uuid" />
+      <path value="$PROJECT_DIR$/vendor/moontoast/math" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

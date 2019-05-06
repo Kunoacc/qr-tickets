@@ -8,6 +8,7 @@ use App\Mail\EventSent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Importer;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class DataController extends Controller
 {
@@ -31,6 +32,29 @@ class DataController extends Controller
     public function sendQr(){
         foreach (Data::all() as $data){
             Mail::to($data)->send(new EventSent($data));
+        }
+    }
+
+    public function verify(Request $request, $uuid){
+        try{
+            $data = Data::whereUuid($uuid)->first();
+            if (count($data) < 1){
+                throw new HttpException(404, 'User Id Not Found');
+            } else {
+                throw new HttpException(200, $data);
+            }
+        } catch (HttpException $exception){
+            if ($exception->getStatusCode() === 404){
+                return response()->json([
+                    'status' => $exception->getStatusCode(),
+                    'message' => $exception->getMessage()
+                ], $exception->getStatusCode());
+            }
+            return response()->json([
+                'status' => $exception->getStatusCode(),
+                'message' => 'Code verified successfully',
+                'data' => json_decode($exception->getMessage())
+            ]);
         }
     }
     //
