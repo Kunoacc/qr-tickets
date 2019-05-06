@@ -7,6 +7,7 @@ use App\Imports\DataImport;
 use App\Mail\EventSent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Schema;
 use Maatwebsite\Excel\Importer;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -21,9 +22,11 @@ class DataController extends Controller
 
     public function import(Request $request){
         if ($request->hasFile('sheet')){
-            if (Data::all()->count() > 0){
-                Data::truncate();
-            }
+//            if (Data::all()->count() > 0){
+//                Schema::disableForeignKeyConstraints();
+//                Data::truncate();
+//                Schema::enableForeignKeyConstraints();
+//            }
             $this->importer->import(new DataImport, $request->file('sheet'));
             return redirect('/data');
         }
