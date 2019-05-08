@@ -18,6 +18,7 @@ class CreateDataTable extends Migration
             $table->string('name');
             $table->uuid('uuid');
             $table->string('email', 191)->unique();
+            $table->boolean('is_sent_email')->default(false);
             $table->timestamps();
         });
     }

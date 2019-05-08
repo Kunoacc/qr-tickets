@@ -22,19 +22,16 @@ class DataController extends Controller
 
     public function import(Request $request){
         if ($request->hasFile('sheet')){
-//            if (Data::all()->count() > 0){
-//                Schema::disableForeignKeyConstraints();
-//                Data::truncate();
-//                Schema::enableForeignKeyConstraints();
-//            }
             $this->importer->import(new DataImport, $request->file('sheet'));
             return redirect('/data');
         }
     }
 
     public function sendQr(){
-        foreach (Data::all() as $data){
+        foreach (Data::all()->where('is_sent_email', false) as $data){
             Mail::to($data)->send(new EventSent($data));
+            $data->is_sent_email = true;
+            $data->save();
         }
     }
 
