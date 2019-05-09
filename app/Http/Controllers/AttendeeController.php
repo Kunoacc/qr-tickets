@@ -29,8 +29,6 @@ class AttendeeController extends Controller
                 'message' => $exception->getMessage(),
             ], 401);
         }
-
-
     }
     //
 }
