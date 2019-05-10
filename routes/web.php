@@ -30,6 +30,6 @@ Route::get('/test_email', function (\App\Data $data){
     return new \App\Mail\EventSent($data);
 });
 Route::get('/php', function (){return dd(phpinfo());});
-Route::get('/migrate', function (){
-   \Illuminate\Support\Facades\Artisan::call('migrate');
+Route::get('/send_one', function (){
+   \Illuminate\Support\Facades\Mail::to('nelson@nelsonatuonwu.me')->send(new \App\Mail\EventSent(\App\Data::all()->first()));
 });
