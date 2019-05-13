@@ -63,7 +63,7 @@ class AttendeeController extends Controller
             ], 400);
         }
         $id = $request->input('id');
-        $attendee = Attendees::all()->where('user_id', $id);
+        $attendee = Attendees::all()->where('data_id', $id);
         if ($attendee->isEmpty()){
             try{
                 $attendee = new Attendees();
