@@ -22,6 +22,12 @@ Route::prefix('/attendees')->group(function (){
    Route::post('/add', 'AttendeeController@add');
 });
 
+Route::prefix('/api')->group(function (){
+   Route::prefix('/attendee')->group(function (){
+     Route::post('/verify', 'AttendeeController@verifyAttendee')->name('attendee.verify');
+     Route::post('/add', 'AttendeeController@addAttendee')->name('attendee.add');
+   });
+});
 
 Route::get('/data', function (){return view('data');});
 Route::post('/send_qr', 'DataController@sendQr')->name('sendData');
