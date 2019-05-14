@@ -63,6 +63,12 @@ class AttendeeController extends Controller
             ], 400);
         }
         $id = $request->input('id');
+        if (Data::all()->where('id', $id)->isEmpty()){
+            return response()->json([
+                'status' => 400,
+                'message' => 'This user ID does not exist',
+            ], 400);
+        }
         $attendee = Attendees::all()->where('data_id', $id);
         if ($attendee->isEmpty()){
             try{
@@ -82,9 +88,9 @@ class AttendeeController extends Controller
             }
         } else {
             return response()->json([
-                'status' => 302,
+                'status' => 200,
                 'message' => 'User already registered as an attendee',
-            ], 302);
+            ], 200);
         }
     }
     //
