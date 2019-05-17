@@ -30,6 +30,7 @@ Route::prefix('/api')->group(function (){
 });
 
 Route::get('/data', function (){return view('data');});
+Route::get('/data/export', 'AttendeeController@exportAttendees')->name('data.export');
 Route::post('/send_qr', 'DataController@sendQr')->name('sendData');
 Route::get('/test_email', function (\App\Data $data){
     $data = $data->find(1);

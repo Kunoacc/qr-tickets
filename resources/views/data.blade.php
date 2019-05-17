@@ -21,7 +21,9 @@
             <p>{{\App\Data::all()->count()}} records imported</p>
         </div>
         <button type="submit" class="btn btn-primary"> Send QR Codes </button>
+        <a href="{{route('data.export')}}" class="btn btn-success">Export Data</a>
     </form>
+
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

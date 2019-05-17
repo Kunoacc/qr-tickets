@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Attendees;
 use App\Data;
+use App\Exports\AttendeesExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AttendeeController extends Controller
 {
@@ -92,6 +94,10 @@ class AttendeeController extends Controller
                 'message' => 'User already registered as an attendee',
             ], 200);
         }
+    }
+
+    public function exportAttendees(){
+        return Excel::download(new AttendeesExport, 'attendees.csv');
     }
     //
 }
